@@ -10,9 +10,9 @@ import { ShoppingListService } from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit, OnDestroy {
+export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[];
-  private subscription: Subscription;
+  subscription: Subscription;
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
@@ -25,11 +25,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       );
   }
 
-  onEditItem(index: number){
+  onEditItem(index: number) {
     this.slService.startedEditing.next(index);
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 }
